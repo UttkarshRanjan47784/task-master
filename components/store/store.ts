@@ -1,6 +1,15 @@
 import { atom } from "recoil";
 
-const emptyStrArr: string[] = [];
+type taskType = {
+  taskName: string;
+  taskStatus: boolean;
+};
+type boardType = {
+  title: string;
+  taskList: taskType[];
+};
+
+const emptyBoardArr: boardType[] = [];
 
 const appTheme = atom({
   key: `appTheme`,
@@ -9,10 +18,10 @@ const appTheme = atom({
 
 const boardList = atom({
   key: `boardList`,
-  // default: emptyStrArr,
-  default: [...Array(20)].map((item, index) => {
-    return `Task ${index + 1}`;
-  }),
+  default: emptyBoardArr,
+  // default: [...Array(20)].map((item, index) => {
+  //   return `Task List ${index + 1}`;
+  // }),
 });
 
 export { appTheme, boardList };

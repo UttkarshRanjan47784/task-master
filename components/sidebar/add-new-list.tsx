@@ -13,6 +13,7 @@ import {
 import { Input } from "../ui/input";
 import { useSetRecoilState } from "recoil";
 import { boardList } from "../store/store";
+import { previousFriday } from "date-fns/previousFriday";
 
 export default function AddNewList() {
   const [newBoard, setNewBoard] = useState(``);
@@ -41,7 +42,34 @@ export default function AddNewList() {
                 disabled={newBoard.length == 0}
                 onClick={() => {
                   setBoards((prev) => {
-                    return [...prev, newBoard];
+                    return [
+                      ...prev,
+                      {
+                        title: newBoard,
+                        taskList: [
+                          {
+                            taskName: `Task 1 :  remote: Resolving deltas: 100% (2/2), completed with 2 local objects.`,
+                            taskStatus: false,
+                          },
+                          {
+                            taskName: `Task 2 :  remote: Resolving deltas: 100% (2/2), completed with 2 local objects.`,
+                            taskStatus: false,
+                          },
+                          {
+                            taskName: `Task 3 :  remote: Resolving deltas: 100% (2/2), completed with 2 local objects.`,
+                            taskStatus: false,
+                          },
+                          {
+                            taskName: `Task 4 :  remote: Resolving deltas: 100% (2/2), completed with 2 local objects.`,
+                            taskStatus: false,
+                          },
+                          {
+                            taskName: `Task 5 :  remote: Resolving deltas: 100% (2/2), completed with 2 local objects.`,
+                            taskStatus: false,
+                          },
+                        ],
+                      },
+                    ];
                   });
                   setNewBoard(``);
                 }}

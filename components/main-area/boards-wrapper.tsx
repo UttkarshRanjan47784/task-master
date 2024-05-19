@@ -9,14 +9,12 @@ export default function BoardsWrapper() {
   const boards = useRecoilValue(boardList);
 
   let renderBoards = boards.map((item, index) => {
-    return (
-      <TaskList key={`${index}${Math.random()}`} title={`${item}`}></TaskList>
-    );
+    return <TaskList key={`${index}${Math.random()}`} data={item}></TaskList>;
   });
 
   return (
     <ScrollArea className="w-full h-full">
-      <div className="w-full h-full grid grid-cols-3 gap-5">{renderBoards}</div>
+      <div className="w-full h-full grid grid-cols-2 gap-5">{renderBoards}</div>
     </ScrollArea>
   );
 }
